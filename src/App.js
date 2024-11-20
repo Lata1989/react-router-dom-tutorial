@@ -3,18 +3,23 @@ import { NavBar } from "./components/NavBar";
 import { Home } from "./routes/Home";
 import { Contact } from "./routes/Contact";
 import { About } from "./routes/About";
+import { UsuarioProvider } from "./context/UsuarioProvider";
+import { Login } from "./routes/Login";
 
 export const App = () => {
   return (
     <>
       <NavBar></NavBar>
       <hr></hr>
-      <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="contact" element={<Contact></Contact>}></Route>
-        <Route path="/about" element={<About></About>}></Route>
-        <Route path="/*" element={<Navigate to="/"></Navigate>}></Route>
-      </Routes>
+      <UsuarioProvider>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="contact" element={<Contact></Contact>}></Route>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/*" element={<Navigate to="/"></Navigate>}></Route>
+        </Routes>
+      </UsuarioProvider>
     </>
   );
 }
